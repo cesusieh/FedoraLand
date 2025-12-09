@@ -1,8 +1,8 @@
 name: FedoraLand
-description: Clean Hyprland + GTK image (Native Tooling).
+description: Clean Hyprland + GTK image (Fixed).
 
 base-image: ghcr.io/ublue-os/base-main
-image-version: 42
+image-version: latest
 
 modules:
   - type: files
@@ -10,46 +10,36 @@ modules:
       - source: system
         destination: /
 
-  # --- BLOCO 1: FUNDAÇÃO DO SISTEMA & DEV TOOLS ---
+  # --- BLOCO 1: AJUSTES DO SISTEMA ---
+  # Removemos tudo que já vem na base (podman, toolbox, pipewire, etc)
+  # Mantemos apenas o que falta para transformar o servidor em desktop.
   - type: dnf
     install:
       packages:
-        # Core Hardware & Login
+        # --- Interface & Login ---
         - sddm
-        - pipewire
-        - wireplumber
+        - network-manager-applet
         
-        # Ferramentas Nativas Fedora Atomic
-        - toolbox      # Seu container manager escolhido
-        - podman       # Engine de containers
-        - just         # Task runner
-        
-        # Utilitários de Sistema
-        - git
-        - fuse
-        - openssl
-        - ffmpeg-free
-        - lshw
-        
-        # CLI Moderno
-        - eza          # ls moderno
-        - starship     # Prompt
-        - micro        # Editor
-        - wl-clipboard # Clipboard support
-        - jq           # JSON support
-        - libnotify    # Notifications
-        
-        # Suporte a Sistemas de Arquivo (GVFS)
+        # --- Suporte a Arquivos ---
         - gvfs 
         
-        # Fontes & Temas
+        # --- Fontes & Temas ---
         - google-noto-sans-fonts
         - fira-code-fonts
         - adw-gtk3-theme 
+        
+        # --- Bibliotecas Gráficas ---
+        # O Qt5 já veio instalado segundo o log, mantemos só o 6
         - qt6-qtwayland
-        - qt5-qtwayland
+        
+        # --- Utilitários Extras ---
+        # Git e Micro não deram erro de duplicidade, então mantemos
+        - git
+        - micro
+        # ffmpeg-free não deu erro, mantemos para garantir codecs
+        - ffmpeg-free
 
-  # --- BLOCO 2: ECOSSISTEMA HYPRLAND (Solopasha) ---
+  # --- BLOCO 2: ECOSSISTEMA HYPRLAND ---
   - type: dnf
     repos:
       copr:
@@ -70,7 +60,7 @@ modules:
         - cliphist
         - pyprland
         
-        # Screenshot Suite
+        # Screenshot (wl-clipboard, jq e libnotify já estão na base, removemos daqui)
         - grim
         - slurp
         - hyprshot
@@ -81,7 +71,7 @@ modules:
         - kitty
         - hyprqt6engine
 
-  # --- BLOCO 3: FLATPAKS (APPS) ---
+  # --- BLOCO 3: FLATPAKS ---
   - type: default-flatpaks
     configurations:
       - notify: true
