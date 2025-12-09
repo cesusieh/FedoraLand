@@ -1,4 +1,4 @@
-name: FedoraLand
+name: fedoraland
 description: Clean Hyprland + GTK image (Fixed).
 
 base-image: ghcr.io/ublue-os/base-main
