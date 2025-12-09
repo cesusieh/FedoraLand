@@ -1,5 +1,5 @@
 name: fedoraland
-description: Clean Hyprland + GTK image (Fixed).
+description: Clean Hyprland + GTK image (With App Store).
 
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest
@@ -11,8 +11,6 @@ modules:
         destination: /
 
   # --- BLOCO 1: AJUSTES DO SISTEMA ---
-  # Removemos tudo que já vem na base (podman, toolbox, pipewire, etc)
-  # Mantemos apenas o que falta para transformar o servidor em desktop.
   - type: dnf
     install:
       packages:
@@ -29,14 +27,11 @@ modules:
         - adw-gtk3-theme 
         
         # --- Bibliotecas Gráficas ---
-        # O Qt5 já veio instalado segundo o log, mantemos só o 6
         - qt6-qtwayland
         
         # --- Utilitários Extras ---
-        # Git e Micro não deram erro de duplicidade, então mantemos
         - git
         - micro
-        # ffmpeg-free não deu erro, mantemos para garantir codecs
         - ffmpeg-free
 
   # --- BLOCO 2: ECOSSISTEMA HYPRLAND ---
@@ -60,7 +55,7 @@ modules:
         - cliphist
         - pyprland
         
-        # Screenshot (wl-clipboard, jq e libnotify já estão na base, removemos daqui)
+        # Screenshot
         - grim
         - slurp
         - hyprshot
@@ -79,6 +74,8 @@ modules:
         install:
           - org.mozilla.firefox
           - org.gnome.Nautilus
+          # Lojinha de Apps (Bazaar)
+          - io.github.kolunmi.Bazaar
       - scope: user
 
   # --- BLOCO 4: SERVIÇOS ---
