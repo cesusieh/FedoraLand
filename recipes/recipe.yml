@@ -1,5 +1,5 @@
 name: fedoraland
-description: Clean Hyprland + GTK image (With App Store).
+description: Clean Hyprland + GTK image (Dev Edition).
 
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest
@@ -10,75 +10,66 @@ modules:
       - source: system
         destination: /
 
-  # --- BLOCO 1: AJUSTES DO SISTEMA ---
   - type: dnf
     install:
       packages:
-        # --- Interface & Login ---
         - sddm
         - network-manager-applet
         
-        # --- Suporte a Arquivos ---
+        - nautilus
+        - nautilus-python
         - gvfs 
         
-        # --- Fontes & Temas ---
-        - google-noto-sans-fonts
-        - fira-code-fonts
-        - adw-gtk3-theme 
+        - google-chrome-stable
+        - code
         
-        # --- Bibliotecas Gráficas ---
-        - qt6-qtwayland
-        
-        # --- Utilitários Extras ---
+        - zsh
+        - util-linux-user
         - git
         - micro
         - ffmpeg-free
 
-  # --- BLOCO 2: ECOSSISTEMA HYPRLAND ---
+        - google-noto-sans-fonts
+        - fira-code-fonts
+        - adw-gtk3-theme 
+        - qt6-qtwayland
+
+  - type: script
+    scripts:
+      - setup-zsh.sh
+
   - type: dnf
     repos:
       copr:
         - solopasha/hyprland
     install:
       packages:
-        # Core
         - hyprland
         - hyprpaper
         - hyprlock
         - hypridle
         - xdg-desktop-portal-hyprland
         - hyprpolkitagent
-        
-        # Produtividade
         - hyprpicker
         - hyprsunset
         - cliphist
         - pyprland
-        
-        # Screenshot
         - grim
         - slurp
         - hyprshot
         - satty
-        
-        # Interface
         - wofi
         - kitty
         - hyprqt6engine
 
-  # --- BLOCO 3: FLATPAKS ---
   - type: default-flatpaks
     configurations:
       - notify: true
         scope: system
         install:
-          - org.mozilla.firefox
-          - org.gnome.Nautilus
-          # Lojinha de Apps (Bazaar)
           - io.github.kolunmi.Bazaar
       - scope: user
 
-  # --- BLOCO 4: SERVIÇOS ---
   - type: systemd
     system:
       enabled:
