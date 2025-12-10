@@ -1,5 +1,5 @@
 name: fedoraland
-description: Clean Hyprland + GTK image (Dev Edition).
+description: Clean Hyprland.
 
 base-image: ghcr.io/ublue-os/base-main
 image-version: latest
@@ -11,6 +11,10 @@ modules:
         destination: /
 
   - type: dnf
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
     install:
       packages:
         - sddm
@@ -50,14 +54,17 @@ modules:
         - hypridle
         - xdg-desktop-portal-hyprland
         - hyprpolkitagent
+        
         - hyprpicker
         - hyprsunset
         - cliphist
         - pyprland
+        
         - grim
         - slurp
         - hyprshot
         - satty
+        
         - wofi
         - kitty
         - hyprqt6engine
