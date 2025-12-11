@@ -29,9 +29,7 @@ modules:
         - code
         
         - zsh
-        - util-linux-user
         - git
-        - ffmpeg-free
         - lsd
         - bat
 
