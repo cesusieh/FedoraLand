@@ -22,7 +22,10 @@ modules:
         
         - nautilus
         - nautilus-python
-        - gvfs 
+        - gvfs
+        - gnome-sushi
+        - webp-pixbuf-loader
+        - ffmpegthumbnailer
         
         - google-chrome-stable
         - code
@@ -30,11 +33,10 @@ modules:
         - zsh
         - util-linux-user
         - git
-        - micro
         - ffmpeg-free
+        - lsd
+        - bat
 
-        - google-noto-sans-fonts
-        - fira-code-fonts
         - adw-gtk3-theme 
         - qt6-qtwayland
 
@@ -58,7 +60,6 @@ modules:
         - hyprpicker
         - hyprsunset
         - cliphist
-        - pyprland
         
         - grim
         - slurp
@@ -75,6 +76,20 @@ modules:
         scope: system
         install:
           - io.github.kolunmi.Bazaar
+          - com.github.tchx84.Flatseal
+          - io.github.flattool.Warehouse
+          - com.github.marhkb.Pods
+
+          - org.gnome.Loupe
+          - org.gnome.Showtime
+          - org.gnome.Calculator
+          - org.gnome.Papers
+          - io.missioncenter.MissionCenter
+          - io.github.getnf.embellish
+          - ca.desrt.dconf-editor
+
+          - com.discordapp.Discord
+          - com.valvesoftware.Steam
       - scope: user
 
   - type: systemd
