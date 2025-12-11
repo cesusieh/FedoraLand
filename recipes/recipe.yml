@@ -22,7 +22,7 @@ modules:
         
         - nautilus
         - nautilus-python
-        - sushi
+        - glycin-thumbnailer
         - gvfs
         
         - google-chrome-stable
