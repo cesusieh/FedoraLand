@@ -22,10 +22,8 @@ modules:
         
         - nautilus
         - nautilus-python
+        - sushi
         - gvfs
-        - gnome-sushi
-        - webp-pixbuf-loader
-        - ffmpegthumbnailer
         
         - google-chrome-stable
         - code
