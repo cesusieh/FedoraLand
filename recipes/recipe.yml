@@ -53,10 +53,6 @@ modules:
         - xdg-desktop-portal-hyprland
         - hyprpolkitagent
         
-        - hyprpicker
-        - hyprsunset
-        - cliphist
-        
         - grim
         - slurp
         - hyprshot
