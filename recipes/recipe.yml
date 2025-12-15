@@ -33,10 +33,6 @@ modules:
         - adw-gtk3-theme
         - qt6-qtwayland
 
-  - type: script
-    scripts:
-      - setup-zsh.sh
-
   - type: dnf
     repos:
       copr:
