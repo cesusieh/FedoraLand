@@ -19,21 +19,18 @@ modules:
       packages:
         - sddm
         - network-manager-applet
-        
+
         - nautilus
         - nautilus-python
         - glycin-thumbnailer
         - gvfs
-        
-        - google-chrome-stable
-        - code
-        
+
         - zsh
         - git
         - lsd
         - bat
 
-        - adw-gtk3-theme 
+        - adw-gtk3-theme
         - qt6-qtwayland
 
   - type: script
@@ -52,12 +49,12 @@ modules:
         - hypridle
         - xdg-desktop-portal-hyprland
         - hyprpolkitagent
-        
+
         - grim
         - slurp
         - hyprshot
         - satty
-        
+
         - wofi
         - kitty
         - hyprqt6engine
@@ -80,6 +77,8 @@ modules:
           - io.github.getnf.embellish
           - ca.desrt.dconf-editor
 
+          - com.google.Chrome
+          - com.visualstudio.code
           - com.discordapp.Discord
           - com.valvesoftware.Steam
       - scope: user
