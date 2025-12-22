@@ -30,7 +30,6 @@ modules:
         - lsd
         - bat
 
-        - adw-gtk3-theme
         - qt6-qtwayland
 
   - type: dnf
@@ -45,6 +44,7 @@ modules:
         - hypridle
         - xdg-desktop-portal-hyprland
         - hyprpolkitagent
+        - waybar
 
         - grim
         - slurp
@@ -74,7 +74,7 @@ modules:
           - ca.desrt.dconf-editor
 
           - com.google.Chrome
-          - com.visualstudio.code
+          - dev.zed.Zed
           - com.discordapp.Discord
           - com.valvesoftware.Steam
       - scope: user
