@@ -52,7 +52,8 @@ modules:
         - hyprlock
         - hypridle
         - xdg-desktop-portal-hyprland
-        - hyprpolkitagent # Search how custom
+        # - hyprpolkitagent # Search how custom
+        - polkit-gnome
         - kitty
 
         # Screenshots packages
