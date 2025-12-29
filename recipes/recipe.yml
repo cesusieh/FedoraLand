@@ -30,6 +30,8 @@ modules:
         - lsd # Hmmmm...
         - bat
 
+        - polkit-gnome
+
         - qt6-qtwayland
 
   - type: dnf
@@ -53,7 +55,7 @@ modules:
         - hypridle
         - xdg-desktop-portal-hyprland
         # - hyprpolkitagent # Search how custom
-        - polkit-gnome
+
         - kitty
 
         # Screenshots packages
