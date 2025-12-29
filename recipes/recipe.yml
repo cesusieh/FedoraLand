@@ -32,6 +32,14 @@ modules:
 
         - qt6-qtwayland
 
+  - type: dnf
+    repos:
+      copr:
+        - errornointernet/quickshell
+    install:
+      packages:
+        - quickshell
+
   # Hyprland packages
   - type: dnf
     repos:
@@ -54,15 +62,6 @@ modules:
         - satty
 
         - wofi
-        - hyprqt6engine
-
-  - type: dnf
-    repos:
-      copr:
-        - errornointernet/quickshell
-    install:
-      packages:
-        - quickshell
 
   - type: default-flatpaks
     configurations:
