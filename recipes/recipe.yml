@@ -10,6 +10,7 @@ modules:
       - source: system
         destination: /
 
+  # System packages
   - type: dnf
     remove:
       packages:
@@ -17,8 +18,7 @@ modules:
         - firefox-langpacks
     install:
       packages:
-        - sddm
-        - network-manager-applet
+        - sddm # Maybe change it
 
         - nautilus
         - nautilus-python
@@ -27,11 +27,12 @@ modules:
 
         - zsh
         - git
-        - lsd
+        - lsd # Hmmmm...
         - bat
 
         - qt6-qtwayland
 
+  # Hyprland packages
   - type: dnf
     repos:
       copr:
@@ -43,40 +44,37 @@ modules:
         - hyprlock
         - hypridle
         - xdg-desktop-portal-hyprland
-        - hyprpolkitagent
-        - waybar
+        - hyprpolkitagent # Search how custom
+        - kitty
 
-        - grim
-        - slurp
+        # Screenshots packages
+        # - grim
+        # - slurp
         - hyprshot
         - satty
 
         - wofi
-        - kitty
         - hyprqt6engine
+
+  - type: dnf
+    repos:
+      copr:
+        - errornointernet/quickshell
+    install:
+      packages:
+        - quickshell
 
   - type: default-flatpaks
     configurations:
       - notify: true
         scope: system
         install:
+          # Flatpak tools
           - io.github.kolunmi.Bazaar
           - com.github.tchx84.Flatseal
           - io.github.flattool.Warehouse
-          - com.github.marhkb.Pods
+          - io.github.fabrialberio.pinapp
 
-          - org.gnome.Loupe
-          - org.gnome.Showtime
-          - org.gnome.Calculator
-          - org.gnome.Papers
-          - io.missioncenter.MissionCenter
-          - io.github.getnf.embellish
-          - ca.desrt.dconf-editor
-
-          - com.google.Chrome
-          - dev.zed.Zed
-          - com.discordapp.Discord
-          - com.valvesoftware.Steam
       - scope: user
 
   - type: systemd
