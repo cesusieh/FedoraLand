@@ -30,7 +30,7 @@ modules:
         - lsd # Hmmmm...
         - bat
 
-        - polkit-gnome
+        - mate-polkit
 
         - qt6-qtwayland
 
