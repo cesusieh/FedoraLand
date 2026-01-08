@@ -10,7 +10,7 @@ modules:
       - source: system
         destination: /
 
-  - type: homebrew
+  - type: brew
 
   - type: dnf
     remove:
