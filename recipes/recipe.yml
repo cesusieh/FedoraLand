@@ -3,11 +3,11 @@
 # image will be published to ghcr.io/<user>/<name>
 name: FedoraLand
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: Minimal Fedora Atomic Hyprland desktop.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/base-main
+image-version: 44 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -20,17 +20,80 @@ modules:
   - type: dnf
     repos:
       copr:
-        - atim/starship
+        - sdegler/hyprland
+        - errornointernet/quickshell
     install:
       packages:
+        # Desktop/session
+        - hyprland
+        - xdg-desktop-portal
+        - xdg-desktop-portal-hyprland
+        - xdg-desktop-portal-gtk
+        - greetd
+        - tuigreet
+        - uwsm
+
+        # User apps
+        - kitty
+        - quickshell
+        - nautilus
+        - fuzzel
+        - mako
+        - zsh
         - micro
-        - starship
+
+        # Wayland utilities
+        - wl-clipboard
+        - cliphist
+        - grim
+        - slurp
+        - hyprpaper
+        - hypridle
+        - hyprlock
+        - hyprpolkitagent
+
+        # System basics
+        - flatpak
+        - NetworkManager
+        - pipewire
+        - wireplumber
+        - pipewire-pulseaudio
+        - alsa-utils
+        - pavucontrol
+        - brightnessctl
+        - playerctl
+        - pamixer
+        - power-profiles-daemon
+        - upower
+        - polkit
+        - gnome-keyring
+
+        # Desktop integration
+        - qt5-qtwayland
+        - qt6-qtwayland
+        - xdg-user-dirs
+        - xdg-utils
+        - gvfs
+        - gvfs-mtp
+        - gvfs-smb
+        - udisks2
+        - adwaita-icon-theme
+        - google-noto-sans-fonts
+        - google-noto-emoji-fonts
+        - jetbrains-mono-fonts
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+
+  - type: systemd
+    system:
+      enabled:
+        - greetd.service
+        - NetworkManager.service
+        - power-profiles-daemon.service
 
   - type: default-flatpaks
     configurations:
@@ -39,7 +102,7 @@ modules:
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
-          - org.gnome.Loupe
+          - io.github.kolunmi.Bazaar
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
