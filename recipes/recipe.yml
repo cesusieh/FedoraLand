@@ -18,21 +18,24 @@ modules:
         - cesusieh/Hyprland
     install:
       packages:
+        # Session, compositor, and portals
         - hyprland
+        - hyprland-uwsm
+        - uwsm
         - xdg-desktop-portal
         - xdg-desktop-portal-hyprland
         - xdg-desktop-portal-gtk
         - greetd
         - tuigreet
-        - uwsm
-        - hyprland-uwsm
 
+        # Core desktop apps and shell
         - kitty
         - quickshell
         - nautilus
         - fuzzel
         - zsh
 
+        # Hyprland desktop utilities
         - wl-clipboard
         - hyprshot
         - hyprpaper
@@ -40,13 +43,16 @@ modules:
         - hyprlock
         - hyprpolkitagent
 
-        - flatpak
+        # System and CLI basics
         - NetworkManager
         - NetworkManager-tui
         - git-core
         - curl
         - file
         - procps-ng
+        - psmisc
+
+        # Archives and compression
         - bzip2
         - gzip
         - tar
@@ -54,6 +60,8 @@ modules:
         - xz
         - 7zip
         - zstd
+
+        # Audio
         - pipewire
         - wireplumber
         - pipewire-pulseaudio
@@ -61,9 +69,14 @@ modules:
         - pavucontrol
         - playerctl
         - pamixer
+
+        # Auth and secrets
         - polkit
         - gnome-keyring
+        - gnome-keyring-pam
 
+        # Desktop integration
+        - flatpak
         - qt5-qtwayland
         - qt6-qtwayland
         - xdg-user-dirs
@@ -77,9 +90,11 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - nwg-panel
 
   - type: script
     scripts:
+      - configure-authselect.sh
       - install-starship.sh
       - install-zsh-plugins.sh
 

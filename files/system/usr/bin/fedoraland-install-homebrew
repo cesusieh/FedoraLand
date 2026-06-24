@@ -2,6 +2,7 @@
 set -euo pipefail
 
 brew_prefix="/home/linuxbrew/.linuxbrew"
+brew_parent="$(dirname "${brew_prefix}")"
 install_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
 
 if [[ "$(id -u)" -eq 0 ]]; then
@@ -17,8 +18,11 @@ if [[ -x "${brew_prefix}/bin/brew" ]]; then
 fi
 
 echo "Installing Homebrew to ${brew_prefix}."
-echo "The upstream installer may ask for sudo once to create /home/linuxbrew."
+echo "Preparing ${brew_parent}; sudo may ask for your password once."
 
+sudo install -d -m 0755 -o "$(id -un)" -g "$(id -gn)" "${brew_parent}"
+
+echo "Running the upstream Homebrew installer."
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL "${install_url}")"
 
 eval "$("${brew_prefix}/bin/brew" shellenv)"
