@@ -32,8 +32,6 @@ modules:
         - nautilus
         - fuzzel
         - zsh
-        - zsh-autosuggestions
-        - zsh-syntax-highlighting
 
         - wl-clipboard
         - hyprshot
@@ -83,6 +81,7 @@ modules:
   - type: script
     scripts:
       - install-starship.sh
+      - install-zsh-plugins.sh
 
   - type: systemd
     system:
