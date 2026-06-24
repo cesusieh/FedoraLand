@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check just syntax
-        uses: ublue-os/just-action@v2
+        uses: ublue-os/just-action@v3
 
       - name: Build Custom Image
         uses: blue-build/github-action@v1.11
