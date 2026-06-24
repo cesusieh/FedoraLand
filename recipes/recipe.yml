@@ -16,7 +16,6 @@ modules:
     repos:
       copr:
         - cesusieh/Hyprland
-        - atim/starship
     install:
       packages:
         - hyprland
@@ -33,7 +32,6 @@ modules:
         - nautilus
         - fuzzel
         - zsh
-        - starship
         - zsh-autosuggestions
         - zsh-syntax-highlighting
 
@@ -82,12 +80,15 @@ modules:
         - firefox
         - firefox-langpacks
 
+  - type: script
+    scripts:
+      - install-starship.sh
+
   - type: systemd
     system:
       enabled:
         - greetd.service
         - NetworkManager.service
-        - fedoraland-default-shell.service
 
   - type: default-flatpaks
     configurations:

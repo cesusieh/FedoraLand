@@ -4,4 +4,4 @@ INACTIVE=-1
 EXPIRE=
 SHELL=/usr/bin/zsh
 SKEL=/etc/skel
-CREATE_MAIL_SPOOL=yes
+CREATE_MAIL_SPOOL=no

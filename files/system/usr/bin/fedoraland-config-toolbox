@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+container="${1:-}"
+
+toolbox_args=()
+if [[ -n "${container}" ]]; then
+  toolbox_args+=(--container "${container}")
+fi
+
+toolbox run "${toolbox_args[@]}" sh -lc '
+  set -e
+
+  if command -v dnf5 >/dev/null 2>&1; then
+    sudo dnf5 -y install zsh curl bzip2 gzip tar unzip xz 7zip zstd
+  else
+    sudo dnf -y install zsh curl bzip2 gzip tar unzip xz 7zip zstd
+  fi
+
+  curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir /usr/bin
+
+  sudo install -d /usr/share/zsh-autosuggestions /usr/share/zsh-syntax-highlighting
+  sudo curl -fsSL -o /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    https://raw.githubusercontent.com/zsh-users/zsh-autosuggestions/master/zsh-autosuggestions.zsh
+  sudo curl -fsSL -o /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    https://raw.githubusercontent.com/zsh-users/zsh-syntax-highlighting/master/zsh-syntax-highlighting.zsh
+'
