@@ -1,0 +1,10 @@
+[Unit]
+Description=Set FedoraLand default user shell
+ConditionPathExists=!/var/lib/fedoraland/default-shell.done
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/fedoraland-default-shell
+
+[Install]
+WantedBy=multi-user.target

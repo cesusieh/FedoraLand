@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+brew_prefix="/home/linuxbrew/.linuxbrew"
+install_url="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+
+if [[ "$(id -u)" -eq 0 ]]; then
+  echo "Run this as your regular user, not as root." >&2
+  exit 1
+fi
+
+if [[ -x "${brew_prefix}/bin/brew" ]]; then
+  eval "$("${brew_prefix}/bin/brew" shellenv)"
+  brew update
+  brew doctor
+  exit 0
+fi
+
+echo "Installing Homebrew to ${brew_prefix}."
+echo "The upstream installer may ask for sudo once to create /home/linuxbrew."
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL "${install_url}")"
+
+eval "$("${brew_prefix}/bin/brew" shellenv)"
+brew analytics off
+brew doctor
+
+cat <<'EOF'
+
+Homebrew is installed.
+Open a new shell, or run:
+
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+Try:
+
+  brew install hello
+EOF
