@@ -86,6 +86,7 @@ modules:
         - adwaita-icon-theme
         - google-noto-sans-fonts
         - google-noto-emoji-fonts
+  - type: dnf
     remove:
       packages:
         - firefox
