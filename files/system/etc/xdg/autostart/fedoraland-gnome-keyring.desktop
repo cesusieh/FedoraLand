@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=FedoraLand GNOME Keyring
+Comment=Initialize GNOME Keyring for the graphical session
+Exec=/usr/bin/gnome-keyring-daemon --start --components=secrets,pkcs11
+NoDisplay=true

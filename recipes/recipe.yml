@@ -46,7 +46,18 @@ modules:
         # System and CLI basics
         - NetworkManager
         - NetworkManager-tui
+        - bat
+        - btop
+        - eza
+        - fastfetch
         - git-core
+        - gitui
+        - glow
+        - httpie
+        - ncdu
+        - neovim
+        - podman-tui
+        - ranger
         - curl
         - file
         - procps-ng
@@ -91,7 +102,9 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - htop
         - nwg-panel
+        - nvtop
 
   - type: script
     scripts:
